@@ -10,6 +10,9 @@
 
 2. 查看数据前5行和后5行(默认)，head(10)，则为前10行  
 `data.head().append(data.tail())`
+3. 查看数据集整体信息  
+`data.describe()`  
+`data.info()`
 3. 查看数据缺失值情况  
 `data.isnull().sum()`
 4. 转化数字  
