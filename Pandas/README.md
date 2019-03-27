@@ -22,6 +22,10 @@
 4. 查看数据缺失值情况  
     `data.isnull().sum()`
 
+    同时还可以查看是否存在无穷大值
+
+    `np.isinf(data).sum().sum()`
+
 5. 查看某特征唯一值
 
   `data['列名'].unique()`
