@@ -91,15 +91,15 @@ df['列名'] = combi['列名'].replace(fat_content_dict)
 11. 对某列特征排序
 
         `data['列名'].sort_values()`
-
+    
         默认升序，降序则为
-
+    
         `data['列名'].sort_values(ascending=False)`
 
 12. 对DataFrame重置索引值
 
         `data.reset_index(drop=True)`
-
+    
         *True* 表示丢弃原先索引值，默认为False，保留  
 
 13. 删除某一列
@@ -116,29 +116,31 @@ df['列名'] = combi['列名'].replace(fat_content_dict)
 15. 合并数据集，此方法比较复杂，参数较多，还有
 
         `data = data.merge(data1, how='left', left_on='Id2', right_on='Id2')`
-
+    
         以左边的列名为参考，向左合并
-
+    
         `data = data.merge(data1, how='outer', on=列名')`
-
+    
         outer 表示并集，默认是 inner，交集
-
+    
         类似的还有**join, concat**
-
+    
         细节后面再补充
 
 16. 删除某列重复值
 
-        `data = data.drop_duplicates(['列名'], keep='first')`
-
-        first 表示保留第一个重复值，还有 last
+     ```python
+     data = data.drop_duplicates(['列名'], keep='first')
+     
+     first 表示保留第一个重复值，还有 last
+     ```
 
 17. 选择
 
         `data.loc[ : ]`	
-
+    
         按具体的索引值选择
-
+    
         `data.iloc[ : ]`
         按顺序索引值选择
 
