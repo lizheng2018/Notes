@@ -4,13 +4,21 @@
 ---
 1. 导入、导出文件  
    * 读取CSV文件  
-     `data = pd.read_csv('data/filename.csv')`  
-     如果是时间序列，则加上：  
+
+     ```python
+     data = pd.read_csv('data/filename.csv'， index_col=0)
+     # index_col=0 则读取的数据中不会出现'Unnamed: 0'
+     ```
+
+   * 如果是时间序列，则加上：  
      `data = pd.read_csv('data/filename.csv', parse_dates=['时间列名'])`
 
    * 导出CSV文件
 
-     `data.to_csv(‘data/filename.csv’)`
+     ```python
+     data.to_csv(‘data/filename.csv’, index=False)
+     # index=False 则导出的数据中不会出现'Unnamed: 0'
+     ```
 
 2. 查看数据前5行和后5行(默认)，head(10)，则为前10行  
     `data.head().append(data.tail())`
@@ -45,7 +53,6 @@
     
     df.columns[np.where(np.isnan(df))[1]]
     Out: Index(['x', 'x', 'x', 'x'], dtype='object') # df.columns 是获取列名称，对应后面的[1]取列号
-    
     ```
 
     
@@ -90,21 +97,27 @@ df['列名'] = combi['列名'].replace(fat_content_dict)
 
 11. 对某列特征排序
 
-        `data['列名'].sort_values()`
-    
-        默认升序，降序则为
-    
-        `data['列名'].sort_values(ascending=False)`
+     ```python
+     `data['列名'].sort_values()`
+     
+     默认升序，降序则为
+     
+     `data['列名'].sort_values(ascending=False)`
+     ```
 
 12. 对DataFrame重置索引值
 
-        `data.reset_index(drop=True)`
-    
-        *True* 表示丢弃原先索引值，默认为False，保留  
+     ```python
+     `data.reset_index(drop=True)`
+     
+     *True* 表示丢弃原先索引值，默认为False，保留  
+     ```
 
 13. 删除某一列
 
-        `data = data.drop(columns=['列名'])`
+     ```python
+     `data = data.drop(columns=['列名'])`
+     ```
 
 14. 删除某一列的NaN值
 
@@ -115,17 +128,19 @@ df['列名'] = combi['列名'].replace(fat_content_dict)
 
 15. 合并数据集，此方法比较复杂，参数较多，还有
 
-        `data = data.merge(data1, how='left', left_on='Id2', right_on='Id2')`
-    
-        以左边的列名为参考，向左合并
-    
-        `data = data.merge(data1, how='outer', on=列名')`
-    
-        outer 表示并集，默认是 inner，交集
-    
-        类似的还有**join, concat**
-    
-        细节后面再补充
+     ```python
+     `data = data.merge(data1, how='left', left_on='Id2', right_on='Id2')`
+     
+     以左边的列名为参考，向左合并
+     
+     `data = data.merge(data1, how='outer', on=列名')`
+     
+     outer 表示并集，默认是 inner，交集
+     
+     类似的还有**join, concat**
+     
+     细节后面再补充
+     ```
 
 16. 删除某列重复值
 
@@ -137,12 +152,14 @@ df['列名'] = combi['列名'].replace(fat_content_dict)
 
 17. 选择
 
-        `data.loc[ : ]`	
-    
-        按具体的索引值选择
-    
-        `data.iloc[ : ]`
-        按顺序索引值选择
+     ```python
+     `data.loc[ : ]`	
+     
+     按具体的索引值选择
+     
+     `data.iloc[ : ]`
+     按顺序索引值选择
+     ```
 
 18. 选出数据集中数值类特征和字符类特征`
 
