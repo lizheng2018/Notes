@@ -18,12 +18,19 @@ c.NotebookApp.browser = 'chrome'
 
 ### 设置主题、字体等
 
-* jt -t onedork -fs 14 -cellw 80% -ofs 10 -dfs 10 -T  
--cellw(占屏比或宽度) -ofs(输出段的字号) -dfs(pandas字体大小)-T(显示工具栏)
+```python
+pip install jupyterthemes
+
+jt -t onedork -fs 14 -cellw 80% -ofs 10 -dfs 10 -T
+# -cellw(占屏比或宽度) -ofs(输出段的字号) -dfs(pandas字体大小)-T(显示工具栏)
+```
+
+
 
 ### 快捷工具
+
 * 在Anaconda Prompt中运行以下命令：
-```
+```python
 pip install jupyter_contrib_nbextensions && jupyter contrib nbextension install
 ```
 * 打开 notebook，单击「edit」，然后点「nbextensions config」  
