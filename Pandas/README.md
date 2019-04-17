@@ -129,17 +129,12 @@ df['列名'] = combi['列名'].replace(fat_content_dict)
 15. 合并数据集，此方法比较复杂，参数较多，还有
 
       ```python
-      `data = data.merge(data1, how='left', left_on='Id2', right_on='Id2')`
-      
-      以左边的列名为参考，向左合并
-      
-      `data = data.merge(data1, how='outer', on=列名')`
-      
-      outer 表示并集，默认是 inner，交集
-      
-      类似的还有**join, concat**
-      
-      细节后面再补充
+     # 以左边的列名为参考，向左合并
+     data = data.merge(data1, how='left', left_on='Id2', right_on='Id2')
+     # outer 表示并集，默认是 inner，交集
+     data = data.merge(data1, how='outer', on=列名')
+     类似的还有**join, concat**
+     细节后面再补充
       ```
 
 16. 删除某列重复值
@@ -153,11 +148,9 @@ df['列名'] = combi['列名'].replace(fat_content_dict)
 17. 选择
 
       ```python
-      `data.loc[ : ]`	
-      
+      data.loc[ : ]
       按具体的索引值选择
-      
-      `data.iloc[ : ]`
+      data.iloc[ : ]
       按顺序索引值选择
       ```
 
@@ -195,6 +188,13 @@ df['列名'] = combi['列名'].replace(fat_content_dict)
     value = mutual_info_regression(data.iloc[:, i:i+1], data.iloc[:, j])[0]
     # 赋值
     data.iloc[i, j] = value
+    ```
+
+22. 按行索引值删除
+
+    ```python
+    # row_remove 是列表,按索引值删除，不是顺序
+    X = X.drop(index=row_remove)
     ```
 
     
