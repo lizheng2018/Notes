@@ -66,7 +66,7 @@
   `data['列名'].unique()`
 
 6. 转化数字  
-    `data['列名'] = pd.to_numeric(data['列名'], errors='coerce')`  
+    ` `  
     参数：`errors: {‘ignore’, ‘raise’, ‘coerce’}, default ‘raise’`  
     raise返回异常；ignore则忽略无效值；coerce将无效值转为NaN.  
     `df.apply(pd.to_numeric, errors='ignore')`  
@@ -97,95 +97,105 @@ df['列名'] = combi['列名'].replace(fat_content_dict)
 
 11. 对某列特征排序
 
-     ```python
-     `data['列名'].sort_values()`
-     
-     默认升序，降序则为
-     
-     `data['列名'].sort_values(ascending=False)`
-     ```
+      ```python
+      `data['列名'].sort_values()`
+      
+      默认升序，降序则为
+      
+      `data['列名'].sort_values(ascending=False)`
+      ```
 
 12. 对DataFrame重置索引值
 
-     ```python
-     `data.reset_index(drop=True)`
-     
-     *True* 表示丢弃原先索引值，默认为False，保留  
-     ```
+      ```python
+      `data.reset_index(drop=True)`
+      
+      *True* 表示丢弃原先索引值，默认为False，保留  
+      ```
 
 13. 删除某一列
 
-     ```python
-     `data = data.drop(columns=['列名'])`
-     ```
+      ```python
+      `data = data.drop(columns=['列名'])`
+      ```
 
 14. 删除某一列的NaN值
 
-      ```python
-      data = data.dropna(subset=['列名'])
-      data = data.dropna(how='all', axis=1) # 删除全为nan的列
-      ```
+       ```python
+       data = data.dropna(subset=['列名'])
+       data = data.dropna(how='all', axis=1) # 删除全为nan的列
+       ```
 
 15. 合并数据集，此方法比较复杂，参数较多，还有
 
-     ```python
-     `data = data.merge(data1, how='left', left_on='Id2', right_on='Id2')`
-     
-     以左边的列名为参考，向左合并
-     
-     `data = data.merge(data1, how='outer', on=列名')`
-     
-     outer 表示并集，默认是 inner，交集
-     
-     类似的还有**join, concat**
-     
-     细节后面再补充
-     ```
+      ```python
+      `data = data.merge(data1, how='left', left_on='Id2', right_on='Id2')`
+      
+      以左边的列名为参考，向左合并
+      
+      `data = data.merge(data1, how='outer', on=列名')`
+      
+      outer 表示并集，默认是 inner，交集
+      
+      类似的还有**join, concat**
+      
+      细节后面再补充
+      ```
 
 16. 删除某列重复值
 
-     ```python
-     data = data.drop_duplicates(['列名'], keep='first')
-     
-     first 表示保留第一个重复值，还有 last
-     ```
+      ```python
+      data = data.drop_duplicates(['列名'], keep='first')
+      
+      first 表示保留第一个重复值，还有 last
+      ```
 
 17. 选择
 
-     ```python
-     `data.loc[ : ]`	
-     
-     按具体的索引值选择
-     
-     `data.iloc[ : ]`
-     按顺序索引值选择
-     ```
+      ```python
+      `data.loc[ : ]`	
+      
+      按具体的索引值选择
+      
+      `data.iloc[ : ]`
+      按顺序索引值选择
+      ```
 
 18. 选出数据集中数值类特征和字符类特征`
 
-       ```python
-       num_data = data.select_dtypes('number')
-       obj_data = data.select_dtypes('object')
-       ```
+        ```python
+        num_data = data.select_dtypes('number')
+        obj_data = data.select_dtypes('object')
+        ```
 
 19. 缺失值填充
 
-       ```python
-       data = data.fillna(data.median())
-       ```
-
-       用**每列**的中值填充，还可以用，0，均值mean等
+        ```python
+        data = data.fillna(data.median())
+         # 用每列的中值填充，还可以用，0，均值mean等
+        ```
 
 20. 更改列名
 
-     ```python
-     # 将第三列的列名改为'new name'
-     df.rename(columns={ df.columns[2]: "new name" }, inplace=True)
-     
-     # 假如df一共有三列，你想把所有列名依次改为'col_1', 'col_2', 'col_3'
-     df.columns = ['col_1', 'col_2', 'col_3']
-     
-     假设你的df里有一列叫做'col_1'，如果你想把这列的名字改成'col_a'，那么可以这样
-     df = df.rename(columns={'col_1': 'col_a'})
-     ```
+      ```python
+      # 将第三列的列名改为'new name'
+      df.rename(columns={ df.columns[2]: "new name" }, inplace=True)
+      
+      # 假如df一共有三列，你想把所有列名依次改为'col_1', 'col_2', 'col_3'
+      df.columns = ['col_1', 'col_2', 'col_3']
+      
+      假设你的df里有一列叫做'col_1'，如果你想把这列的名字改成'col_a'，那么可以这样
+      df = df.rename(columns={'col_1': 'col_a'})
+      ```
+
+21. 选择某列
+
+    ```python
+    # 互信息计算
+    value = mutual_info_regression(data.iloc[:, i:i+1], data.iloc[:, j])[0]
+    # 赋值
+    data.iloc[i, j] = value
+    ```
+
+    
 
