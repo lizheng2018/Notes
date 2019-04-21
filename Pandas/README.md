@@ -197,5 +197,15 @@ df['列名'] = combi['列名'].replace(fat_content_dict)
     X = X.drop(index=row_remove)
     ```
 
-    
+23. 数据操作符
+
+    ```python
+    | (or), & (and), ~ (not)
+    例如：
+    X[(X[col] < (Q1 - 15 * IQR)) | (X[col] > (Q3 + 15 * IQR)) # 取“或”
+    # 输出满足条件的data的索引值，存在列表中
+    X[(X[col] < (Q1 - 15 * IQR)) | (X[col] > (Q3 + 15 * IQR))].index.tolist()
+    ```
+
+24. 
 
