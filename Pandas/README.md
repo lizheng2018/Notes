@@ -6,7 +6,7 @@
    * 读取CSV文件  
 
      ```python
-     data = pd.read_csv('data/filename.csv'， index_col=0)
+     data = pd.read_csv('data/filename.csv'，index_col=0)
      # index_col=0 则读取的数据中不会出现'Unnamed: 0'
      ```
 
@@ -128,14 +128,15 @@ df['列名'] = combi['列名'].replace(fat_content_dict)
 
 15. 合并数据集，此方法比较复杂，参数较多，还有
 
-      ```python
-     # 以左边的列名为参考，向左合并
-     data = data.merge(data1, how='left', left_on='Id2', right_on='Id2')
-     # outer 表示并集，默认是 inner，交集
-     data = data.merge(data1, how='outer', on=列名')
-     类似的还有**join, concat**
-     细节后面再补充
-      ```
+       ```python
+      # 以左边的列名为参考，向左合并
+      data = data.merge(data1, how='left', left_on='Id2', right_on='Id2')
+      # outer 表示并集，默认是 inner，交集
+      data = data.merge(data1, how='outer', on=列名')
+      
+      类似的还有**join, concat**
+      细节后面再补充
+       ```
 
 16. 删除某列重复值
 
@@ -156,17 +157,17 @@ df['列名'] = combi['列名'].replace(fat_content_dict)
 
 18. 选出数据集中数值类特征和字符类特征`
 
-        ```python
-        num_data = data.select_dtypes('number')
-        obj_data = data.select_dtypes('object')
-        ```
+     ```python
+     num_data = data.select_dtypes('number')
+     obj_data = data.select_dtypes('object')
+     ```
 
 19. 缺失值填充
 
-        ```python
-        data = data.fillna(data.median())
-         # 用每列的中值填充，还可以用，0，均值mean等
-        ```
+    ```python
+    data = data.fillna(data.median())
+     # 用每列的中值填充，还可以用，0，均值mean等
+    ```
 
 20. 更改列名
 
