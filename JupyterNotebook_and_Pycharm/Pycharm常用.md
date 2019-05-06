@@ -31,6 +31,10 @@
 
         选中多行代码后，同时按住shift+Tab键，左移四个字符
 
+* 选中变量
+
+    ctrl + W, 再 ctrl + C 复制
+
 
 
 ### Pycharm中import时无法识别自己写的程序
