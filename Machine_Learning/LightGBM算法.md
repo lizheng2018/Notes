@@ -13,7 +13,7 @@
 
 ### 1.LightGBM主要特点
 
-* 带深度限制 的Leaf-wise的叶子生长策略
+* 带深度限制的Leaf-wise的叶子生长策略
 * 基于Histogram的决策树算法
 * Histogram图做差加速
 * 直接支持类别特征(Categorical Feature)
