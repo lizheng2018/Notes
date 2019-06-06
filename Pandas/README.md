@@ -112,17 +112,13 @@ df['列名'] = combi['列名'].replace(fat_content_dict)
 
 13. 删除某一列
 
-        ```python
-        `data = data.drop(columns=['列名'])`
-        ```
-
+        data = data.drop(columns=['列名'])
+    
 14. 删除某一列的NaN值
 
-         ```python
          data = data.dropna(subset=['列名'])
          data = data.dropna(how='all', axis=1) # 删除全为nan的列
-         ```
-
+    
 15. 合并数据集，此方法比较复杂，参数较多，还有
 
      ```python
@@ -139,10 +135,9 @@ df['列名'] = combi['列名'].replace(fat_content_dict)
 
     ```python
     data = data.drop_duplicates(['列名'], keep='first')
-    
     first 表示保留第一个重复值，还有 last
     ```
-
+    
 17. 选择
 
     ```python
@@ -164,6 +159,7 @@ df['列名'] = combi['列名'].replace(fat_content_dict)
       ```python
       data = data.fillna(data.median())
        # 用每列的中值填充，还可以用，0，均值mean等
+    
       ```
 
 20. 更改列名
@@ -218,5 +214,25 @@ df['列名'] = combi['列名'].replace(fat_content_dict)
       Out: 1
       ```
 
-25. 
+25. 查看类别特征数量
+
+    ```python
+    data.groupby(by=['列名']).size().reset_index()
+    # 还可以使用
+    from collections import Counter
+    print(sorted(Counter(data['列名']).items()))
+    ```
+
+26. 对数值特征进行分类
+
+    ```python
+    # cut，‘[-1, WI.mean(), WI.max()]’，像这样，第一个类是包含均值的，半开半闭，可以是要分的类别整数
+    WI = data['WI']
+    wi = pd.cut(WI, [-1, WI.mean(), WI.max()], labels=[0, 1])
+    data['WI'] = wi
+    
+    
+    ```
+
+    
 
